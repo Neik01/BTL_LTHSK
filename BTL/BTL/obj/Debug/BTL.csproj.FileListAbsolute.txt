@@ -9,3 +9,13 @@ D:\LTHSK\BTL_LTHSK\BTL\BTL\bin\Debug\BTL.exe
 D:\LTHSK\BTL_LTHSK\BTL\BTL\bin\Debug\BTL.pdb
 D:\LTHSK\BTL_LTHSK\BTL\BTL\obj\Debug\BTL.exe
 D:\LTHSK\BTL_LTHSK\BTL\BTL\obj\Debug\BTL.pdb
+C:\Users\Pham_Ha_PC\Documents\BTL_LTHSK\BTL\BTL\bin\Debug\BTL.exe.config
+C:\Users\Pham_Ha_PC\Documents\BTL_LTHSK\BTL\BTL\bin\Debug\BTL.exe
+C:\Users\Pham_Ha_PC\Documents\BTL_LTHSK\BTL\BTL\bin\Debug\BTL.pdb
+C:\Users\Pham_Ha_PC\Documents\BTL_LTHSK\BTL\BTL\obj\Debug\BTL.csproj.AssemblyReference.cache
+C:\Users\Pham_Ha_PC\Documents\BTL_LTHSK\BTL\BTL\obj\Debug\BTL.FormMonHoc.resources
+C:\Users\Pham_Ha_PC\Documents\BTL_LTHSK\BTL\BTL\obj\Debug\BTL.Properties.Resources.resources
+C:\Users\Pham_Ha_PC\Documents\BTL_LTHSK\BTL\BTL\obj\Debug\BTL.csproj.GenerateResource.cache
+C:\Users\Pham_Ha_PC\Documents\BTL_LTHSK\BTL\BTL\obj\Debug\BTL.csproj.CoreCompileInputs.cache
+C:\Users\Pham_Ha_PC\Documents\BTL_LTHSK\BTL\BTL\obj\Debug\BTL.exe
+C:\Users\Pham_Ha_PC\Documents\BTL_LTHSK\BTL\BTL\obj\Debug\BTL.pdb

@@ -15,8 +15,7 @@ namespace BTL
     {
 
         private ErrorProvider errorProvider = new ErrorProvider();
-        string connectionString = "Data Source=MY-PC\\SQLEXPRESS; " +
-                                        "Initial Catalog=QUANLYGIANGDAY2;Integrated Security = True";
+        string connectionString = "Data Source=DESKTOP-2HP30CE;Initial Catalog=QUANLYGIANGDAY;Integrated Security=True";
         private DataTable tableGridView = new DataTable();
 
         private DataView dv = new DataView();
@@ -33,42 +32,43 @@ namespace BTL
 
         private void LoadDataToGridView(string filter = "")
         {
-            try
-            {
-                tableGridView.Clear();
-                using (SqlConnection sqlConnection = new SqlConnection(connectionString))
-                {
-                    using (SqlCommand cmd = sqlConnection.CreateCommand())
-                    {
-                        cmd.CommandText = "getAllSubject";
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
-                        {
-                            adapter.Fill(tableGridView);
+            Console.WriteLine("hello");
+            //try
+            //{
+            //    tableGridView.Clear();
+            //    using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            //    {
+            //        using (SqlCommand cmd = sqlConnection.CreateCommand())
+            //        {
+            //            cmd.CommandText = "getAllSubject";
+            //            cmd.CommandType = CommandType.StoredProcedure;
+            //            using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+            //            {
+            //                adapter.Fill(tableGridView);
 
-                            if (tableGridView.Rows.Count > 0)
-                            {
+            //                if (tableGridView.Rows.Count > 0)
+            //                {
 
-                                dv = tableGridView.DefaultView;
-                                dgv_data.AutoGenerateColumns = false;
+            //                    dv = tableGridView.DefaultView;
+            //                    dgv_data.AutoGenerateColumns = false;
 
-                                //Lọc dữ liệu
-                                if (!string.IsNullOrEmpty(filter)) dv.RowFilter = filter;
+            //                    //Lọc dữ liệu
+            //                    if (!string.IsNullOrEmpty(filter)) dv.RowFilter = filter;
 
-                                dgv_data.DataSource = dv;
-                            }
-                            else
-                            {
-                                MessageBox.Show("Không tồn tại dữ liệu");
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            //                    dgv_data.DataSource = dv;
+            //                }
+            //                else
+            //                {
+            //                    MessageBox.Show("Không tồn tại dữ liệu");
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.ToString());
+            //}
         }
 
         public void loadDataToCb()
@@ -300,10 +300,6 @@ namespace BTL
 
                     }
                     LoadDataToGridView();
-                }
-                else
-                {
-                    return;
                 }
             }
 
