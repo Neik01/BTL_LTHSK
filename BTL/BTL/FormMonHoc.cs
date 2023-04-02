@@ -32,43 +32,42 @@ namespace BTL
 
         private void LoadDataToGridView(string filter = "")
         {
-            Console.WriteLine("hello");
-            //try
-            //{
-            //    tableGridView.Clear();
-            //    using (SqlConnection sqlConnection = new SqlConnection(connectionString))
-            //    {
-            //        using (SqlCommand cmd = sqlConnection.CreateCommand())
-            //        {
-            //            cmd.CommandText = "getAllSubject";
-            //            cmd.CommandType = CommandType.StoredProcedure;
-            //            using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
-            //            {
-            //                adapter.Fill(tableGridView);
+            try
+            {
+                tableGridView.Clear();
+                using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand cmd = sqlConnection.CreateCommand())
+                    {
+                        cmd.CommandText = "getAllSubject";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                        {
+                            adapter.Fill(tableGridView);
 
-            //                if (tableGridView.Rows.Count > 0)
-            //                {
+                            if (tableGridView.Rows.Count > 0)
+                            {
 
-            //                    dv = tableGridView.DefaultView;
-            //                    dgv_data.AutoGenerateColumns = false;
+                                dv = tableGridView.DefaultView;
+                                dgv_data.AutoGenerateColumns = false;
 
-            //                    //Lọc dữ liệu
-            //                    if (!string.IsNullOrEmpty(filter)) dv.RowFilter = filter;
+                                //Lọc dữ liệu
+                                if (!string.IsNullOrEmpty(filter)) dv.RowFilter = filter;
 
-            //                    dgv_data.DataSource = dv;
-            //                }
-            //                else
-            //                {
-            //                    MessageBox.Show("Không tồn tại dữ liệu");
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.ToString());
-            //}
+                                dgv_data.DataSource = dv;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Không tồn tại dữ liệu");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         public void loadDataToCb()
@@ -103,7 +102,6 @@ namespace BTL
             tb_Id.Text = dv[index]["sMaMon"].ToString();
             tb_TC.Text = dv[index]["iSoTC"].ToString();
             comboBox_falcultyName.Text = dv[index]["sTenKhoa"].ToString();
-
         }
 
         private void btn_add_Click(object sender, EventArgs e)
@@ -216,7 +214,6 @@ namespace BTL
                                 DataRow row = tblMonHoc.Rows.Find(tb_Id.Text);
                                 row["sTenMon"] = tb_Name.Text;
                                 row["sMaKhoa"] = findFalcultyId(comboBox_falcultyName.Text);
-
                                 row["iSoTC"] = tb_TC.Text;
 
 
@@ -367,6 +364,12 @@ namespace BTL
                 btn_update.Enabled = true;
                 errorProvider.SetError(tb_Name, null);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormLopHanhChinh hanhChinh = new FormLopHanhChinh(connectionString);
+            hanhChinh.Show();
         }
     }
 

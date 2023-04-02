@@ -46,6 +46,7 @@
             this.sTenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iSoTC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sTenKhoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_data)).BeginInit();
             this.SuspendLayout();
             // 
@@ -133,6 +134,7 @@
             this.btn_add.TabIndex = 18;
             this.btn_add.Text = "Thêm mới môn học";
             this.btn_add.UseVisualStyleBackColor = true;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // btn_update
             // 
@@ -183,7 +185,7 @@
             // 
             // sMaMon
             // 
-            this.sMaMon.DataPropertyName = "sMaMon";
+            this.sMaMon.DataPropertyName = "sMamon";
             this.sMaMon.HeaderText = "Mã môn học";
             this.sMaMon.Name = "sMaMon";
             // 
@@ -205,11 +207,22 @@
             this.sTenKhoa.HeaderText = "Tên khoa";
             this.sTenKhoa.Name = "sTenKhoa";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(492, 222);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(106, 23);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "lớp hành chính";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormMonHoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(642, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dgv_data);
             this.Controls.Add(this.btn_search);
             this.Controls.Add(this.btn_delete);
@@ -249,6 +262,7 @@
         private System.Windows.Forms.Button btn_delete;
         private System.Windows.Forms.Button btn_search;
         private System.Windows.Forms.DataGridView dgv_data;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn sMaMon;
         private System.Windows.Forms.DataGridViewTextBoxColumn sTenMon;
         private System.Windows.Forms.DataGridViewTextBoxColumn iSoTC;

@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormLopHanhChinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLopHanhChinh.Designer.cs">
+      <DependentUpon>FormLopHanhChinh.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMonHoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +63,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormLopHanhChinh.resx">
+      <DependentUpon>FormLopHanhChinh.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMonHoc.resx">
       <DependentUpon>FormMonHoc.cs</DependentUpon>
     </EmbeddedResource>
@@ -78,6 +90,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
