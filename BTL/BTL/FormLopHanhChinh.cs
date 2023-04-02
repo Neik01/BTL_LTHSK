@@ -184,7 +184,7 @@ namespace BTL
             }
             if (!string.IsNullOrEmpty(comboBoxTenGiaoVien.Text))
             {
-                filter += string.Format(" AND sTengv LIKE '%{0}%'", comboBoxTenGiaoVien.Text);
+                filter += string.Format(" AND sTenGV LIKE '%{0}%'", comboBoxTenGiaoVien.Text);
             }
             if (!string.IsNullOrEmpty(comboBoxTenKhoa.Text))
             {
