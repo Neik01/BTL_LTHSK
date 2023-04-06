@@ -13,11 +13,11 @@ namespace BTL
 {
     public partial class FormLopHanhChinh : Form
     {
-        private const string SELECT_lOP_HANH_CHINH = "selectlophanhchinh";
-        private const string INSETT_LOP_HANH_CHINH = "insertlophanhchinh";
+        private const string SELECT_LOP_HANH_CHINH = "selectlophanhchinh";
+        private const string INSERT_LOP_HANH_CHINH = "insertlophanhchinh";
         private DataView view = new DataView();
         private DataTable table = new DataTable();
-        private string connectionStr;
+        private string connectionStr= "Data Source=MY-PC\\SQLEXPRESS;Initial Catalog=QUANLYGIANGDAY2;Integrated Security=True";
         private bool isExistKhoa, isExistGiaoVien, isExistMaLop, isExistTenLop;
         public FormLopHanhChinh()
         {
@@ -40,7 +40,7 @@ namespace BTL
             {
                 using (SqlConnection connection = new SqlConnection(connectionStr))
                 {
-                    using (SqlCommand command = new SqlCommand(SELECT_lOP_HANH_CHINH, connection))
+                    using (SqlCommand command = new SqlCommand(SELECT_LOP_HANH_CHINH, connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         using (SqlDataAdapter adapter = new SqlDataAdapter(command))
@@ -237,7 +237,7 @@ namespace BTL
             //dataGribView.DataSource = view;
             using (SqlConnection connection = new SqlConnection(connectionStr))
             {
-                using (SqlCommand command = new SqlCommand(INSETT_LOP_HANH_CHINH, connection))
+                using (SqlCommand command = new SqlCommand(INSERT_LOP_HANH_CHINH, connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@mal", malop);

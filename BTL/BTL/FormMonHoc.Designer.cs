@@ -47,23 +47,28 @@
             this.iSoTC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sTenKhoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemSubject = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemSubjectDetails = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_data)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 9);
+            this.label2.Location = new System.Drawing.Point(21, 51);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 16);
+            this.label2.Size = new System.Drawing.Size(116, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "Thông tin môn học";
             // 
             // lb_Name
             // 
             this.lb_Name.AutoSize = true;
-            this.lb_Name.Location = new System.Drawing.Point(23, 59);
+            this.lb_Name.Location = new System.Drawing.Point(32, 101);
             this.lb_Name.Name = "lb_Name";
             this.lb_Name.Size = new System.Drawing.Size(70, 13);
             this.lb_Name.TabIndex = 4;
@@ -71,7 +76,7 @@
             // 
             // tb_Name
             // 
-            this.tb_Name.Location = new System.Drawing.Point(142, 52);
+            this.tb_Name.Location = new System.Drawing.Point(151, 94);
             this.tb_Name.Name = "tb_Name";
             this.tb_Name.Size = new System.Drawing.Size(301, 20);
             this.tb_Name.TabIndex = 8;
@@ -79,7 +84,7 @@
             // lb_Id
             // 
             this.lb_Id.AutoSize = true;
-            this.lb_Id.Location = new System.Drawing.Point(23, 109);
+            this.lb_Id.Location = new System.Drawing.Point(32, 151);
             this.lb_Id.Name = "lb_Id";
             this.lb_Id.Size = new System.Drawing.Size(45, 13);
             this.lb_Id.TabIndex = 9;
@@ -87,7 +92,7 @@
             // 
             // tb_Id
             // 
-            this.tb_Id.Location = new System.Drawing.Point(142, 102);
+            this.tb_Id.Location = new System.Drawing.Point(151, 144);
             this.tb_Id.Name = "tb_Id";
             this.tb_Id.Size = new System.Drawing.Size(301, 20);
             this.tb_Id.TabIndex = 10;
@@ -95,7 +100,7 @@
             // lb_TC
             // 
             this.lb_TC.AutoSize = true;
-            this.lb_TC.Location = new System.Drawing.Point(23, 151);
+            this.lb_TC.Location = new System.Drawing.Point(32, 193);
             this.lb_TC.Name = "lb_TC";
             this.lb_TC.Size = new System.Drawing.Size(53, 13);
             this.lb_TC.TabIndex = 11;
@@ -103,7 +108,7 @@
             // 
             // tb_TC
             // 
-            this.tb_TC.Location = new System.Drawing.Point(142, 144);
+            this.tb_TC.Location = new System.Drawing.Point(151, 186);
             this.tb_TC.Name = "tb_TC";
             this.tb_TC.Size = new System.Drawing.Size(301, 20);
             this.tb_TC.TabIndex = 12;
@@ -111,7 +116,7 @@
             // lb_falcultyName
             // 
             this.lb_falcultyName.AutoSize = true;
-            this.lb_falcultyName.Location = new System.Drawing.Point(23, 206);
+            this.lb_falcultyName.Location = new System.Drawing.Point(32, 248);
             this.lb_falcultyName.Name = "lb_falcultyName";
             this.lb_falcultyName.Size = new System.Drawing.Size(53, 13);
             this.lb_falcultyName.TabIndex = 13;
@@ -120,7 +125,7 @@
             // comboBox_falcultyName
             // 
             this.comboBox_falcultyName.FormattingEnabled = true;
-            this.comboBox_falcultyName.Location = new System.Drawing.Point(142, 198);
+            this.comboBox_falcultyName.Location = new System.Drawing.Point(151, 240);
             this.comboBox_falcultyName.Name = "comboBox_falcultyName";
             this.comboBox_falcultyName.Size = new System.Drawing.Size(301, 21);
             this.comboBox_falcultyName.TabIndex = 17;
@@ -128,7 +133,7 @@
             // btn_add
             // 
             this.btn_add.Enabled = false;
-            this.btn_add.Location = new System.Drawing.Point(523, 34);
+            this.btn_add.Location = new System.Drawing.Point(532, 76);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(75, 23);
             this.btn_add.TabIndex = 18;
@@ -139,7 +144,7 @@
             // btn_update
             // 
             this.btn_update.Enabled = false;
-            this.btn_update.Location = new System.Drawing.Point(523, 81);
+            this.btn_update.Location = new System.Drawing.Point(532, 123);
             this.btn_update.Name = "btn_update";
             this.btn_update.Size = new System.Drawing.Size(75, 23);
             this.btn_update.TabIndex = 19;
@@ -150,7 +155,7 @@
             // btn_delete
             // 
             this.btn_delete.Enabled = false;
-            this.btn_delete.Location = new System.Drawing.Point(523, 130);
+            this.btn_delete.Location = new System.Drawing.Point(532, 172);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(75, 23);
             this.btn_delete.TabIndex = 20;
@@ -160,7 +165,7 @@
             // 
             // btn_search
             // 
-            this.btn_search.Location = new System.Drawing.Point(523, 179);
+            this.btn_search.Location = new System.Drawing.Point(532, 221);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(75, 23);
             this.btn_search.TabIndex = 21;
@@ -177,7 +182,7 @@
             this.sTenMon,
             this.iSoTC,
             this.sTenKhoa});
-            this.dgv_data.Location = new System.Drawing.Point(26, 260);
+            this.dgv_data.Location = new System.Drawing.Point(35, 302);
             this.dgv_data.Name = "dgv_data";
             this.dgv_data.Size = new System.Drawing.Size(524, 150);
             this.dgv_data.TabIndex = 22;
@@ -209,13 +214,46 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(492, 222);
+            this.button1.Location = new System.Drawing.Point(501, 264);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(106, 23);
             this.button1.TabIndex = 23;
             this.button1.Text = "lớp hành chính";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(642, 24);
+            this.menuStrip1.TabIndex = 24;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // ToolStripMenuItem
+            // 
+            this.ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemSubject,
+            this.ToolStripMenuItemSubjectDetails});
+            this.ToolStripMenuItem.Name = "ToolStripMenuItem";
+            this.ToolStripMenuItem.Size = new System.Drawing.Size(119, 20);
+            this.ToolStripMenuItem.Text = "Danh sách báo cáo";
+            // 
+            // ToolStripMenuItemSubject
+            // 
+            this.ToolStripMenuItemSubject.Name = "ToolStripMenuItemSubject";
+            this.ToolStripMenuItemSubject.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItemSubject.Text = "Môn học";
+            this.ToolStripMenuItemSubject.Click += new System.EventHandler(this.ToolStripMenuItemSubject_Click);
+            // 
+            // ToolStripMenuItemSubjectDetails
+            // 
+            this.ToolStripMenuItemSubjectDetails.Name = "ToolStripMenuItemSubjectDetails";
+            this.ToolStripMenuItemSubjectDetails.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItemSubjectDetails.Text = "Chi tiết môn học";
+            this.ToolStripMenuItemSubjectDetails.Click += new System.EventHandler(this.ToolStripMenuItemSubjectDetails_Click);
             // 
             // FormMonHoc
             // 
@@ -237,10 +275,14 @@
             this.Controls.Add(this.tb_Name);
             this.Controls.Add(this.lb_Name);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMonHoc";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FormMonHoc_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_data)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,6 +309,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sTenMon;
         private System.Windows.Forms.DataGridViewTextBoxColumn iSoTC;
         private System.Windows.Forms.DataGridViewTextBoxColumn sTenKhoa;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemSubject;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemSubjectDetails;
     }
 }
 

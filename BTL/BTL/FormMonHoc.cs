@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,9 @@ namespace BTL
     {
 
         private ErrorProvider errorProvider = new ErrorProvider();
-        string connectionString = "Data Source=DESKTOP-2HP30CE;Initial Catalog=QUANLYGIANGDAY;Integrated Security=True";
+        string connectionString = "Data Source=MY-PC\\SQLEXPRESS;Initial Catalog=QUANLYGIANGDAY2;Integrated Security=True";
+        //private string connectionString =
+        //    ConfigurationManager.ConnectionStrings["QUANLYGIANGDAY2"].ConnectionString;
         private DataTable tableGridView = new DataTable();
 
         private DataView dv = new DataView();
@@ -370,6 +373,21 @@ namespace BTL
         {
             FormLopHanhChinh hanhChinh = new FormLopHanhChinh(connectionString);
             hanhChinh.Show();
+        }
+
+        private void ToolStripMenuItemSubject_Click(object sender, EventArgs e)
+        {
+            FormReport form = new FormReport();
+            form.Show();
+            form.showReport("DSMH.rpt", "getAllSubject", connectionString);
+        }
+
+        private void ToolStripMenuItemSubjectDetails_Click(object sender, EventArgs e)
+        {
+            string subjectId = tb_Id.Text.Trim();
+            FormReport form = new FormReport();
+            form.Show();
+            form.showSubjectDetails(subjectId, connectionString, "Select_GV_MonHoc", "ChiTietMonHoc.rpt" );
         }
     }
 
