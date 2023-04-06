@@ -2,6 +2,18 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BTL.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <Setting Name="QUANLYGIANGDAYConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=DESKTOP-2HP30CE;Initial Catalog=QUANLYGIANGDAY;Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=DESKTOP-2HP30CE;Initial Catalog=QUANLYGIANGDAY;Integrated Security=True</Value>
+=======
+=======
+>>>>>>> 90f90133754c72bded4f4958e319c48b0d653571
     <Setting Name="QUANLYGIANGDAY2ConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
@@ -9,6 +21,10 @@
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=MY-PC\SQLEXPRESS;Initial Catalog=QUANLYGIANGDAY2;Integrated Security=True</Value>
+<<<<<<< HEAD
+>>>>>>> 90f90133754c72bded4f4958e319c48b0d653571
+=======
+>>>>>>> 90f90133754c72bded4f4958e319c48b0d653571
     </Setting>
   </Settings>
 </SettingsFile>

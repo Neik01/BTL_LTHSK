@@ -8,13 +8,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using BTL.report;
 
 namespace BTL
 {
     public partial class FormLopHanhChinh : Form
     {
+<<<<<<< HEAD
+<<<<<<< HEAD
+        private const string SELECT_lOP_HANH_CHINH = "selectlophanhchinh";
+        private const string SELECT_LOP_HANH_CHINH_THEO_MA = "selectlophanhchinhtheoma";
+        private const string INSETT_LOP_HANH_CHINH = "insertlophanhchinh";
+=======
         private const string SELECT_LOP_HANH_CHINH = "selectlophanhchinh";
         private const string INSERT_LOP_HANH_CHINH = "insertlophanhchinh";
+>>>>>>> 90f90133754c72bded4f4958e319c48b0d653571
+=======
+        private const string SELECT_LOP_HANH_CHINH = "selectlophanhchinh";
+        private const string INSERT_LOP_HANH_CHINH = "insertlophanhchinh";
+>>>>>>> 90f90133754c72bded4f4958e319c48b0d653571
         private DataView view = new DataView();
         private DataTable table = new DataTable();
         private string connectionStr= "Data Source=MY-PC\\SQLEXPRESS;Initial Catalog=QUANLYGIANGDAY2;Integrated Security=True";
@@ -123,7 +135,7 @@ namespace BTL
                     connection.Open();
                     string magiaovien = (string)command.ExecuteScalar();
                     isExistGiaoVien = !string.IsNullOrEmpty(magiaovien);
-                    text_magiaovien.Text = isExistGiaoVien ? magiaovien : "Tên giáo viên không có trong danh sách";
+                    textMaGiaoVien.Text = isExistGiaoVien ? magiaovien : "Tên giáo viên không có trong danh sách";
                 }
             }
         }
@@ -151,8 +163,8 @@ namespace BTL
             txtBoxTenLop.Text = view[i]["sTenlop"].ToString();
             comboBoxTenGiaoVien.Text = view[i]["sTenGv"].ToString();
             comboBoxTenKhoa.Text = view[i]["sTenkhoa"].ToString();
-            text_magiaovien.Text = view[i]["sMagv"].ToString();
-            text_MaKhoa.Text = view[i]["sMakhoa"].ToString();
+            textMaGiaoVien.Text = view[i]["sMagv"].ToString();
+            textMaKhoa.Text = view[i]["sMakhoa"].ToString();
             textSiSo.Text = view[i]["iSiso"].ToString();
         }
 
@@ -193,6 +205,40 @@ namespace BTL
             loadData(filter);
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FormReport formReport = new FormReport(connectionStr);
+                string filter = "{selectlophanhchinh.iSiso} > 0";
+                string path = $@"{Application.StartupPath}\report\lophanhchinh\Reportlophanhchinh.rpt";
+                Report report = new Report("selectlophanhchinh");
+                report.addFilerColumn(table, "sMaLop", txtBoxMaLop.Text);
+                report.addFilerColumn(table, "iSiSo", textSiSo.Text);
+                report.addFilerColumn(table, "sTenGV", comboBoxTenGiaoVien.Text);
+                report.addFilerColumn(table, "sTenLop", txtBoxTenLop.Text);
+                report.addFilerColumn(table, "sTenKhoa", comboBoxTenKhoa.Text);
+                formReport.crystalReportViewer.ReportSource = report.CreateReportDocument(table, path);
+                formReport.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (!isExistMaLop)
+            {
+                MessageBox.Show("không tồn tại mã lớp");
+                return;
+            }
+            FormThongKeDonLopHanhChinh thongkedon = new FormThongKeDonLopHanhChinh(connectionStr, txtBoxMaLop.Text);
+            thongkedon.Show();
+        }
+
         private void txtBoxTenLop_TextChanged(object sender, EventArgs e)
         {
             string tenlop = txtBoxTenLop.Text.Trim();
@@ -203,7 +249,7 @@ namespace BTL
                     command.CommandType = CommandType.Text;
                     connection.Open();
                     isExistTenLop = !string.IsNullOrEmpty(Convert.ToString(command.ExecuteScalar()));
-                    textSiSo.Text = isExistTenLop ? Convert.ToString(command.ExecuteScalar()) : "0";
+                    textSiSo.Text = isExistTenLop ? Convert.ToString(command.ExecuteScalar()) : "";
                 }
             }
         }
@@ -219,10 +265,10 @@ namespace BTL
             int siso;
             malop = txtBoxMaLop.Text;
             tenlop = txtBoxTenLop.Text;
-            makhoa = text_MaKhoa.Text;
-            magiaovien = text_magiaovien.Text;
-            tenkhoa = text_MaKhoa.Text;
-            tengiaovien = text_magiaovien.Text;
+            makhoa = textMaKhoa.Text;
+            magiaovien = textMaGiaoVien.Text;
+            tenkhoa = textMaKhoa.Text;
+            tengiaovien = textMaGiaoVien.Text;
             siso = Convert.ToInt32(textSiSo.Text);
             //DataRow row = table.NewRow();
             //row["sMalop"] = malop;
@@ -266,7 +312,7 @@ namespace BTL
                     connection.Open();
                     string makhoa = (string)command.ExecuteScalar();
                     isExistKhoa = !string.IsNullOrEmpty(makhoa);
-                    text_MaKhoa.Text = isExistKhoa ? makhoa : "Tên khoa không có trong danh sách";
+                    textMaKhoa.Text = isExistKhoa ? makhoa : "Tên khoa không có trong danh sách";
                 }
             }
         }

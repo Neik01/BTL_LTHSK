@@ -1302,76 +1302,30 @@ select * from tblMonHoc
 -	Cho biết danh sách môn (tên môn) của sinh viên đã học, với mã sinh viên là tham số truyền vào
 */
 
---	Tạo thủ tục thêm sinh viên
-create proc insertSV
-@masv varchar(50), @ten nvarchar(50), @ngaysinh datetime, @diachi nvarchar(50), @gt nvarchar(10), @malop varchar(50), @sdt varchar(10)
-as
-insert into tblSinhVien (sMaSV, sTenSV, dNgaySinh, sDiaChi, sGioiTinh, sLopHC, sSDT)
-values (@masv, @ten, @ngaysinh, @diachi, @gt, @malop, @sdt)
+
 
 select * from tblLopHC
 select * from tblSinhVien
 
-exec insertSV
+exec insertsinhvien
 @masv = '21A100100141', @ten = N'Tạ Đức Hoàn', @ngaysinh = '2003-5-5', @diachi = N'Bắc Ninh', @gt = N'Nam', @malop = 'lp6', @sdt = '0321532432'
 
 
---	Tạo thủ tục sửa tên sinh viên theo mã sinh viên
-create proc updateTenSV
-@ma varchar(50), @ten nvarchar(50)
-as
-update tblSinhVien
-set sTenSV = @ten
-where sMaSV = @ma
- 
- -- veef xóa bỏ
-create proc delSV
-@ma varchar(50)
-as
-delete from tblSinhVien
-where sMaSV = @ma
+drop proc delSV
 
 -- về xóa
-create proc selectSV
-as
-select * from tblSinhVien
 
 exec updateTenSV
 @ma = '20IT07', @ten = N'Lê Phương Linh'
 
 
---	Sửa tên lớp hc của sinh viên để chuyên sang lớp khác thông qua mã sinh viên, mã lớp được truyền vào
-create proc updatechuyenLop
-@masv varchar(50), @malop varchar(50)
-as
-update tblSinhVien
-set sLopHC = @malop
-where sMaSV = @masv
-
 exec updatechuyenlop
 @masv = '21IT09', @malop = 'lp4'
 
---	Sửa địa chỉ của sinh viên thong qua mã sinh viên truyền vào
-create proc updateDiaChiSV
-@ma varchar(50), @dc nvarchar(50)
-as
-update tblSinhVien
-set sDiaChi = @dc
-where sMaSV = @ma
 
-exec updateDiaChiSV
+exec updatediachisinhvien
 @ma = '19IT02', @dc = N'Hưng Yên'
 
-
---	Cho biết danh sách môn (tên môn) của sinh viên đã học, với mã sinh viên là tham số truyền vào
-create proc selectmontichluy
-@masv varchar(50)
-as
-select distinct sTenMon
-from tblSinhVien, tblHoc, tblMonHoc
-where tblSinhVien.sMaSV = tblHoc.sMaSV
-and tblHoc.sMaMon = tblMonHoc.sMaMon
-and tblSinhVien.sMaSV = @masv
 
 exec montichluy
 @masv = '21IT01'
@@ -1385,69 +1339,25 @@ exec montichluy
 -	Tạo thủ tục cho biết tổng số lượng giảng viên nữ của 1 khoa với khoa là tham số truyền vào
 */
 
---	Tạo thủ tục chèn thêm 1 giáo viên mới(kiểm tra thỏa mãn điều kiện)
-create proc insertGV
-@ma varchar(50), @ten nvarchar(50), @gt nvarchar(10), @date date, @mak varchar(50)
-as
-insert into tblGiangVien (sMaGV, sTenGV, sGioiTinh, dNgaySinh, sMaKhoa)
-values (@ma, @ten, @gt, @date, @mak)
 
-exec insertGV
+
+exec insertgiaovien
 @ma = 'gv20', @ten = N'Vũ Duy Cường', @gt = N'Nam', @date = '1978-1-12', @mak = 'k3'
 
---	Tạo thủ tục cho danh sách các giáo viên nam thuộc khoa nào với tên khoa là tham số truyền vào
-create proc selectdsgvnamthuockhoa
-@tenk nvarchar(50)
-as
-select sTenGV, sGioiTinh
-from tblGiangVien, tblKhoa
-where tblGiangVien.sMaKhoa = tblKhoa.sMaKhoa
-and sTenKhoa = @tenk
-and sGioiTinh = N'Nam'
 
-exec selectdsgvnamthuockhoa
+exec selectdanhsachgiaoviennamthuockhoa
 @tenk = N'Kinh tế'
 
---	Tạo thủ tục cho danh sách các giáo viên sinh năm nào đó với năm là tham số truyền vào
-create proc selectindsgvtheonamsinh
-@nam int
-as
-select sTenGV, dNgaySinh
-from tblGiangVien
-where year(dngaySinh) = @nam
 
-exec selectindsgvtheonamsinh
+
+exec selectindanhsachgiaovientheonamsinh
 @nam = 1967
-
---	Tạo thủ tục cho biết tên giáo viên quản lí lớp hành chính với lớp hành chính là tham số truyền vào
-create proc selectquanlylop
-@mal varchar(50)
-as
-select tblGiangVien.sMaGV, sTenGV
-from tblGiangVien, tblLopHC
-where tblGiangVien.sMaGV = tblLopHC.sMaGV
-and sMaLop = @mal
 
 exec selectquanlylop
 @mal = 'lp100'
 
---	Tạo thủ tục cho biết tổng số lượng giảng viên nữ của 1 khoa với khoa là tham số truyền vào
-create proc selectdemsogvnu
-@mak varchar(50)
-as
-begin
-	if exists (select * from tblKhoa where sMaKhoa = @mak)
-	begin
-		select count(sMaGV) as [Số lượng giảng viên nữ]
-		from tblGiangVien
-		where sGioiTinh = N'Nữ' and sMaKhoa = @mak
-	end
-	else
-	begin
-		print N'MÃ KHOA KHÔNG TỒN TẠI'
-		return
-	end
-end
+
+
 
 exec selectdemsogvnu
 @mak = 'k2'
@@ -1460,89 +1370,21 @@ exec selectdemsogvnu
 -	Tạo thủ tục trích ra các sinh viên của @lop, @lop là tham số tuyền và
 */
 
---	Tạo thủ tục thêm 1 khoa
-create proc insertKhoa
-@mak varchar(50), @tenk nvarchar(50), @dc nvarchar(50)
-as
-insert into tblKhoa (sMaKhoa, sTenKhoa, sDiaChi)
-values (@mak, @tenk, @dc)
+drop proc insertkhoa
 
-exec insertKhoa
+exec insertkhoa
 @mak = 'k7', @tenk = N'Mỹ Thuật', @dc = N'Cầu Giấy'
-
---	Tạo thủ tục sửa mã khoa của 1 môn theo mã môn được truyền vào
-create proc updatedoimakhoacungcap
-@mam varchar(50), @mak varchar(50)
-as
-update tblMonHoc
-set sMaKhoa = @mak
-where sMaMon = @mam
 
 exec updatedoimakhoacungcap
 @mam = 'm9', @mak = 'k5'
 
---	Tạo thủ tục trích ra các sinh viên là sinh viên của @maKhoa, @maKhoa là tham số tuyền vào
-create proc selectthongkesvthuockhoa
-@mak varchar(50)
-as
-begin
-	if exists (select * from tblKhoa where sMaKhoa = @mak)
-	begin
-		select sTenSV
-		from tblSinhVien, tblLopHC, tblKhoa
-		where tblSinhVien.sLopHC = tblLopHC.sMaLop
-		and tblLopHC.sMaKhoa = tblKhoa.sMaKhoa
-		and tblKhoa.sMaKhoa = @mak
-	end
-	else
-	begin
-		print N'MÃ KHOA KHÔNG TỒN TẠI'
-		return;
-	end
-end
 
 
-exec selectthongkesvthuockhoa
+exec selectthongkesinhvienthuockhoa
 @mak = 'k100'
-
---	Tạo thủ tục trích ra các sinh viên học @maMon, @maMon là tham số tuyền vào
-create proc selectsvhocmon
-@maM varchar(50)
-as
-begin
-	if exists (select * from tblMonHoc where sMaMon = @maM)
-	begin
-		select distinct sTenSV
-		from tblSinhVien, tblHoc
-		where tblSinhVien.sMaSV = tblHoc.sMaSV
-		and sMaMon = @maM
-	end
-	else
-	begin
-		print N'MÃ MÔN KHÔNG TỒN TẠI'
-		return
-	end
-end
 
 exec selectsvhocmon
 @maM = 'm6'
-/* Tạo thủ tục Thống kê sinh viên đã từng phải học lại ít nhất 2 lần theo môn, 
-với mã môn là tham số truyền vào
-*/
-CREATE PROC selectdanhsachhoclaitheomon @maMon varchar(50) AS
-BEGIN
-	IF exists (SELECT tblMonHoc.sMaMon FROM tblMonHoc where @maMon = tblMonHoc.sMaMon)
-		BEGIN
-			SELECT sv.sMaSV AS sMaSv, sv.sTenSV as sTensv
-			FROM tblSinhVien as sv, tblHoc as hoc
-			WHERE @maMon = hoc.sMaMon AND
-				  sv.sMaSV = hoc.sMaSV 	
-			GROUP BY sv.sMaSV, sv.sTenSV
-			HAVING COUNT(hoc.sMaMon) >= 2
-		END
-	ELSE
-		RAISERROR(N'Mã môn này không tồn tại', 16, 10)
-END
 
 EXEC selectdanhsachhoclaitheomon @maMon = 'm5'
 
@@ -1594,135 +1436,29 @@ exec hiensotctichluy
 -	Tạo thủ tục cho biết danh sách giảng viên trên số tuổi, với số tuổi là tham số truyền vào
 */
 
---	Tạo thủ tục thêm mới một môn học
-create proc insertMonHoc
-@ma varchar(50), @mak varchar(50), @tenm nvarchar(50), @sotc int
-as
-begin
-	if exists (select * from tblMonHoc where sMaMon = @ma)
-	begin
-		print N'MÃ MÔN ĐÃ TỒN TẠI'
-		return;
-	end
-	else
-	begin
-		insert into tblMonHoc (sMaMon, sMaKhoa, sTenMon, iSoTC)
-		values (@ma, @mak, @tenm, @sotc)
-	end
-end
+drop proc insertMonHoc
 
-exec insertMonHoc
+exec insertmonhoc
 @ma = 'm24', @mak = 'k2' , @tenm = N'Lập trình mạng', @sotc = 4
 
---Tạo thử tục select tất cả môn học
-create proc getAllSubject
-as
-	select sMaMon, sTenMon, iSoTC, sTenKhoa  
-	from tblMonHoc as mon, tblKhoa as khoa
-	where mon.sMaKhoa = khoa.sMaKhoa
-/*Tạo thủ tục, thay đổi cố vấn học tập(giảng viên chủ nhiệm) quản lý lớp hành chính,
-với mã giảng viên, mã lớp là tham số truyền vào*/
-CREATE proc updatecvht
-@mal varchar(50), @magv varchar(50)
-as
-begin
-	if exists (select * from tblLopHC where sMaLop = @mal)
-	begin
-		if exists (select * from tblGiangVien where sMaGV = @magv)
-		begin
-			update tblLopHC
-			set sMaGV = @magv
-			where sMaLop = @mal
-
-			print N'CẬP NHẬT THÀNH CÔNG'
-		end
-		else
-		begin
-			print N'MÃ GIẢNG VIÊN KHÔNG TỒN TẠI'
-			return;
-		end
-	end
-	else
-	begin
-		print N'MÃ LỚP KHÔNG TỒN TẠI'
-		return;
-	end
-end
 
 exec editCVHT
 @mal = 'lp2', @magv = 'gv2'
 
-/* -	Tạo thủ tục tính số tiền học phải đóng của sinh viên, 
-với mã sinh viên là tham số truyền vào, số lượng tín chỉ của sinh viên đó là trả về. 
-Biết 1 TC là 378.000 */
-CREATE PROC caltinhTienHocCuaSinhVien
-@masv varchar(50), @soluong int output
-as
-begin
-	if exists (select * from tblSinhVien where sMaSV = @masv)
-	begin
-		select @soluong = sum(iSoTC)
-		from tblSinhVien, tblHoc, tblMonHoc
-		where tblSinhVien.sMaSV = tblHoc.sMaSV
-		and tblHoc.sMaMon = tblMonHoc.sMaMon
-		and tblSinhVien.sMaSV = @masv
-		group by tblSinhVien.sMaSV
-	end
-	else
-	begin
-		print N'KHÔNG TÌM THẤY SINH VIÊN'
-		return
-	end
-end
 
 declare @sl int
-exec caltinhTienHocCuaSinhVien
+exec caltinhtienhoccuasinhvien
 @masv = '21IT03', @soluong = @sl output
 select (@sl * 378000) as [Số tiền sinh viên phải đóng]
 
---	Tạo thủ tục lấy số lượng sinh viên nam và nữ trong 1 khoa, với mã khoa là tham số truyền vào, số lượng là tham số output
-create proc caldemslgsvnamnu
-@mak varchar(50), @nam int output, @nu int output
-as
-begin
-	if exists (select * from tblKhoa where sMaKhoa = @mak)
-	begin
-		set @nam = 0
-		set @nu = 0
-		select @nam = count(*)
-		from tblSinhVien, tblLopHC, tblKhoa
-		where tblSinhVien.sLopHC = tblLopHC.sMaLop
-		and tblKhoa.sMaKhoa = tblLopHC.sMaKhoa
-		and sGioiTinh = N'Nam'
-		and tblKhoa.sMaKhoa = @mak;
-		select @nu = count(*)
-		from tblSinhVien, tblLopHC, tblKhoa
-		where tblSinhVien.sLopHC = tblLopHC.sMaLop
-		and tblKhoa.sMaKhoa = tblLopHC.sMaKhoa
-		and sGioiTinh = N'Nữ'
-		and tblKhoa.sMaKhoa = @mak;
-	end
-	else
-	begin
-		print N'KHÔNG TÌM THẤY KHOA'
-		return
-	end
-end
 
 declare @slnam int, @slnu int
 exec caldemslgsvnamnu
 @mak = 'k1', @nam = @slnam output, @nu = @slnu output
 select @slnam as[Số lượng sinh viên nam], @slnu as [Số lượng sinh viên nữ]
 
---	Tạo thủ tục cho biết danh sách giảng viên trên số tuổi, với số tuổi là tham số truyền vào
-create PROC selecttuoigv
-@tuoi int
-as
-select sTenGV, datediff(day, dNgaySinh, getdate())/365 as [Tuổi]
-from tblGiangVien
-where datediff(day, dNgaySinh, getdate())/365 > @tuoi
 
-exec selecttuoigv
+exec selectgiangvientheotuoi
 @tuoi = 57
 
 -- TRIGGER
@@ -2387,35 +2123,6 @@ values
 )
 
 
--- Thủ tục thêm sinh viên
-CREATE PROC insertSV
-@ma varchar(50), @ten nvarchar(50), @date datetime, @dc nvarchar(50), @gt nvarchar(10)
-as
-begin
-	if exists (select * from M2.GIANG_DAY_MAY2.dbo.tblSinhVien where sMaSV = @ma)
-	begin
-		print N'MÃ SINH VIÊN ĐÃ TỒN TẠI BÊN SERVER 2'
-		return
-	end
-	else
-	begin
-		if(@gt = N'Nam')
-		begin
-			insert into tblSinhVien (sMaSV, sTenSv, dNgaySinh, sDiaChi, sGioiTinh)
-			values (@ma, @ten, @date, @dc, @gt)
-		end
-		else
-		begin
-			insert into M2.GIANG_DAY_MAY2.DBO.tblSinhVien (sMaSV, sTenSv, dNgaySinh, sDiaChi, sGioiTinh)
-			values (@ma, @ten, @date, @dc, @gt)
-		end
-		print N'THÊM DỮ LIỆU THÀNH CÔNG...'
-	end
-end
-
-
-EXEC insertSV
-@ma = '20IT01', @ten = N'Chu Văn An', @date = '2001-7-8', @dc = N'Từ Sơn-BN', @gt = N'Nữ'
 
 
 -- Tạo trigger check mã sinh viên khi insert và update
@@ -2480,72 +2187,11 @@ select *
 from m2.giang_day_may2.dbo.tblsinhvien
 where year(dNgaysinh) = 2003
 
--- Tạo thủ tục update địa chỉ của sinh viên, với mã sinh viên và địa chỉ là tham số truyền vào
-create proc updatediachisv
-@ma varchar(50), @dc nvarchar(50)
-as
-begin
-	if exists (select * from dataSV where sMaSV = @ma)
-	begin
-		if @ma in (select sMaSV from tblSinhVien)
-		begin
-			update tblSinhVien
-			set sDiaChi = @dc
-			where sMaSV = @ma
-		end
-		else
-		begin
-			update m2.giang_day_may2.dbo.tblSinhVien
-			set sDiaChi = @dc
-			where sMaSV = @ma
-		end
-	end
-	else
-	begin
-		print N'KHÔNG TỒN TẠI SINH VIÊN CÓ MÃ' + @ma
-		return
-	end
-end
-
+-
 exec c2_updatediachisv
 @ma = '21IT12', @dc = N'Bình Dương'
 
 -- Xử lí giảng viên
--- Thủ tục thêm giảng viên
-create proc insert_GV
-@magv varchar(50), @ten nvarchar(50), @gt nvarchar(10), @date datetime, @dc nvarchar(50)
-as
-begin
-	if exists (select * from tblGiangVien where sMaGV = @magv)
-	begin
-		print N'MÃ GV ĐÃ TỒN TẠI'
-		return
-	end
-	else
-	begin
-		if exists (select * from M2.giang_day_may2.dbo.tblGiangVien where sMaGV = @magv)
-		begin
-			print N'MÃ ĐÃ TỒN TẠI Ở SERVER KHÁC'
-			return
-		end
-		else
-		begin
-			if(@dc = N'Hà Nội')
-			begin
-				insert into tblGiangVien
-				values (@magv, @ten, @gt, @date, @dc)
-			end
-			else
-			begin
-				insert into m2.giang_day_may2.dbo.tblGiangVien
-				values (@magv, @ten, @gt, @date, @dc)
-			end
-		end
-	end
-end
-
-exec insert_GV
-@magv = 'gv8', @ten = N'Nguyễn Thúy Mùi', @gt = N'Nữ', @date = '1978-9-12', @dc = N'Bắc Giang'
 
 -- Tạo trigger check mã giảng viên
 create trigger check_magv
@@ -2567,18 +2213,8 @@ end
 
 
 -- Xử lí lớp hành chính
--- Tạo thủ tục thêm lớp hành chính
 create synonym ThongTinLopHC
 for m2.giang_day_may2.dbo.tblThongTinLopHC
-
-create proc insertlophanhchinh
-@mal varchar(50), @tenlop nvarchar(50), @magv varchar(50), @makhoa varchar(50)
-as
-begin
-		insert into tblLopHC (sMaLop, sTenLop, sMaGV, sMaKhoa, iSiSo)
-		values
-		(@mal, @tenlop, @magv, @makhoa, 0)
-end
 
 update tblLopHC
 set iSiSo = 0
@@ -2968,51 +2604,21 @@ to sl_sinhvien
 /*
 end
 */
--- Tạo store proc cho bang giang vien
-create proc selectwhere_tblGiangVien
-@magv varchar(50)
-as
-select *
-from tblGiangVien
-where sMaGV = @magv
 
 exec selectwhere_tblGiangVien
 @magv = 'gv10'
 
---Tao store pro cho bang mon hoc
-create proc selectwhere_tblMonHoc
-@mamon varchar(50)
-as
-select *
-from tblMonHoc
-where sMaMon = @mamon
 
 exec selectwhere_tblMonHoc
 'm1'
 
 
--- Tao store pro cho bang sinh vien
-create proc selectwhere_tblSinhVien
-@masv varchar(50)
-as
-select *
-from tblSinhVien
-where sMaSV = @masv
 
 
 
--- Tạo store proc cho bảng tblHoc
-Create proc select_tblHoc
-as
-select * from tblHoc
 
 exec select_tblHoc
 
-create proc selectwhere_tblHoc
-@magv varchar(50), @mamon varchar(50), @masv varchar(50), @ngaybd datetime
-as
-select * from tblHoc
-where sMaGV = @magv and sMaMon = @mamon and sMaSV = @masv and dNgayBatDau = @ngaybd
 
 
 exec selectwhere_tblHoc
@@ -3022,37 +2628,16 @@ select * from tblHoc
 where sMaGV = 'gv10' and sMaMon = 'm1' and sMaSV = '20IT04' and dNgayBatDau = '2021-03-20'
 
 -- insert
-create proc insert_tblHoc
-@magv varchar(50),
-@mamon varchar(50),
-@masv varchar(50),
-@ngaybd datetime,
-@diemcc float,
-@diemgk float,
-@diemthi float,
-@diemkthp float
-as
-insert into tblHoc values(@magv, @mamon, @masv, @ngaybd, @diemcc, @diemgk, @diemthi, @diemkthp)
+
+drop proc inserthoc
 
 -- delete
-create proc delete_tblHoc
-@magv varchar(50), @mamon varchar(50), @masv varchar(50), @ngaybd datetime
-as
-delete from tblHoc
-where sMaGV = @magv and sMaMon = @mamon and sMaSV = @masv and dNgayBatDau = @ngaybd
 
 exec delete_tblHoc
 'gv1', 'm1', '19IT03', '2020-03-30'
 
 select * from tblHoc
 
---update 
-create proc update_tblHoc
-@magv varchar(50), @mamon varchar(50), @masv varchar(50), @ngaybd datetime, @diemcc float, @diemgk float, @diemthi float, @diemkthp float
-as
-update tblHoc
-set fDiemCC = @diemcc, fDiemGK = @diemgk, fDiemThi = @diemthi, fDiemKTHP = @diemkthp
-where sMaGV = @magv and sMaMon = @mamon and sMaSV = @masv and dNgayBatDau = @ngaybd
 
 exec update_tblHoc
 'gv1', 'm1', '19IT04', '2020-03-30', 10, 10, 10, 10
@@ -3074,9 +2659,11 @@ exec update_tblHoc
 
 
 -- tạo proc cho sinh viên
-create proc select_sinhvien
+create proc selectsinhvien
 as
 select * from tblSinhVien
+
+drop proc search_giangvien
 
 create proc insert_sinhvien
 @masv varchar(50), @tensv nvarchar(50), @ngaysinh datetime, @diachi nvarchar(50), @gioitinh nvarchar(50), @lophc varchar(50), @sdt varchar(50)
@@ -3128,7 +2715,7 @@ select * from tblSinhVien
 exec search_sinhvien @masv = 'hoa', @tensv = 'hoa'
 
 select * from tblHoc
-
+-- mai làm nốt
 create proc GetDSSV_LopHC
 @malop varchar(50)
 as
@@ -3220,9 +2807,10 @@ exec Update_LopMon @masv , @mamon , @magv , @dvhv , @diemcc , @diemgk , @diemthi
 
 select * from tblHoc
 -- CREATE PROC MON HOC
+drop proc select_sinhvien
 create proc select_Mon_hoc
 as
-select distinct mon.sMaMon, sMaKhoa, sTenMon, iSoTC
+select distinct mon.sMaMon, sMaKho, sTenMon, iSoTC
 from tblMonHoc as mon
 inner join tblHoc as hoc
 on mon.sMaMon = hoc.sMaMon
@@ -3296,7 +2884,7 @@ begin
 	where sMaGV = @ma
 end
 
-create proc search_giangvien
+create proc selectgiangvien
 @key nvarchar(50)
 as
 begin
@@ -3307,6 +2895,8 @@ begin
 	where gv.sMaGV like '%' + @key + '%'
 	or sTenGV like '%' + @key + '%'
 end
+
+drop proc select_donvihocvu
 
 exec search_giangvien 'gv'
 
@@ -3319,13 +2909,6 @@ select * from tblGiangVien
 where sMaKhoa = @mak
 
 exec GetGiangVien_Khoa 'k1'
-
--- CREATE PROC LOPHC
-create proc selectlophanhchinh
-as
-select sMaLop, sTenGV, iSiSo, sTenLop, l.sMaGV, l.sMaKhoa, sTenKhoa
-from tblLopHC as l, tblGiangVien as gv, tblKhoa as k
-where l.sMaKhoa = k.sMaKhoa and gv.sMaGV = l.sMaGV
 
 select *
 from tblLopHC
@@ -3367,7 +2950,7 @@ exec selectwhere_taikhoan 'admin', '1'
 
 
 -- CREATE PROC CHO DON VI HOC VU
-create proc select_donvihocvu
+create proc selectdonvihocvu
 as
 select * from tblDonViHocVu
 
@@ -3389,19 +2972,10 @@ select * from tblHoc
 exec selectSV_lopmon null, null, null
 
 
--- create proc cho khoa
-create proc select_khoa
-as
-select * from tblKhoa
+drop proc select_khoa
 
 exec select_khoa
 
---thủ tục lấy ra mã khoa
-create proc select_ma_khoa 
-@tenkhoa nvarchar(50)
-as
-select sMaKhoa from tblKhoa
-where sTenKhoa = @tenkhoa
 
 
 select *from 
