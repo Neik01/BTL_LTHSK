@@ -1,35 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using BTL.report;
+using System.Configuration;
 
 namespace BTL
 {
     public partial class FormLopHanhChinh : Form
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        private const string SELECT_lOP_HANH_CHINH = "selectlophanhchinh";
+
         private const string SELECT_LOP_HANH_CHINH_THEO_MA = "selectlophanhchinhtheoma";
-        private const string INSETT_LOP_HANH_CHINH = "insertlophanhchinh";
-=======
+      
         private const string SELECT_LOP_HANH_CHINH = "selectlophanhchinh";
         private const string INSERT_LOP_HANH_CHINH = "insertlophanhchinh";
->>>>>>> 90f90133754c72bded4f4958e319c48b0d653571
-=======
-        private const string SELECT_LOP_HANH_CHINH = "selectlophanhchinh";
-        private const string INSERT_LOP_HANH_CHINH = "insertlophanhchinh";
->>>>>>> 90f90133754c72bded4f4958e319c48b0d653571
+
         private DataView view = new DataView();
         private DataTable table = new DataTable();
-        private string connectionStr= "Data Source=MY-PC\\SQLEXPRESS;Initial Catalog=QUANLYGIANGDAY2;Integrated Security=True";
+        private string connectionStr = ConfigurationManager.ConnectionStrings["QUANLYGIANGDAY2ConnectionString"].ConnectionString;
         private bool isExistKhoa, isExistGiaoVien, isExistMaLop, isExistTenLop;
         public FormLopHanhChinh()
         {

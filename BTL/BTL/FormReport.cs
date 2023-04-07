@@ -1,55 +1,42 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using System;
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 using System.Data.SqlClient;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-=======
-=======
->>>>>>> 90f90133754c72bded4f4958e319c48b0d653571
+
 using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-<<<<<<< HEAD
->>>>>>> 90f90133754c72bded4f4958e319c48b0d653571
-=======
->>>>>>> 90f90133754c72bded4f4958e319c48b0d653571
+
+
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
 using System.Xml;
->>>>>>> 90f90133754c72bded4f4958e319c48b0d653571
-=======
+
 using System.Xml;
->>>>>>> 90f90133754c72bded4f4958e319c48b0d653571
+
 
 namespace BTL
 {
     public partial class FormReport : Form
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         private string connectionStr;
         private const string SELECT_lOP_HANH_CHINH = "selectlophanhchinh";
-=======
->>>>>>> 90f90133754c72bded4f4958e319c48b0d653571
-=======
->>>>>>> 90f90133754c72bded4f4958e319c48b0d653571
+
         public FormReport()
         {
             InitializeComponent();
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         public FormReport(string connection)
         {
             InitializeComponent();
@@ -78,11 +65,6 @@ namespace BTL
             //}
             
         }
-    }
-}
-=======
-=======
->>>>>>> 90f90133754c72bded4f4958e319c48b0d653571
 
         public void showReport(string reportFileName, string spName, string connection)
         {
@@ -120,7 +102,7 @@ namespace BTL
             }
         }
 
-        public void showSubjectDetails(string subjectId, string connection, string spName,string reportFileName)
+        public void showSubjectDetails(string subjectId, string connection, string spName, string reportFileName)
         {
             {
                 try
@@ -152,15 +134,18 @@ namespace BTL
                         }
                     }
                 }
-                
-                catch(Exception ex)
+
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
-                }    
+                }
             }
         }
-    } }
-<<<<<<< HEAD
->>>>>>> 90f90133754c72bded4f4958e319c48b0d653571
-=======
->>>>>>> 90f90133754c72bded4f4958e319c48b0d653571
+    }
+    
+}
+
+
+        
+
+ 

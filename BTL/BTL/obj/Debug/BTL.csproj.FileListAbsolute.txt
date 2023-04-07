@@ -16,7 +16,6 @@ C:\Users\Pham_Ha_PC\Documents\BTL_LTHSK\BTL\BTL\obj\Debug\BTL.pdb
 C:\Users\Pham_Ha_PC\Documents\BTL_LTHSK\BTL\BTL\obj\Debug\BTL.FormLopHanhChinh.resources
 C:\Users\Pham_Ha_PC\Documents\BTL_LTHSK\BTL\BTL\obj\Debug\BTL.csproj.CopyComplete
 <<<<<<< HEAD
-<<<<<<< HEAD
 C:\Users\Pham_Ha_PC\Documents\BTL_LTHSK\BTL\BTL\obj\Debug\BTL.FormReport.resources
 C:\Users\Pham_Ha_PC\Documents\BTL_LTHSK\BTL\BTL\BTL.exe.config
 C:\Users\Pham_Ha_PC\Documents\BTL_LTHSK\BTL\BTL\BTL.exe
@@ -39,7 +38,6 @@ C:\Users\Pham_Ha_PC\Documents\BTL_LTHSK\BTL\BTL\CrystalDecisions.ReportAppServer
 C:\Users\Pham_Ha_PC\Documents\BTL_LTHSK\BTL\BTL\CrystalDecisions.ReportAppServer.CommonControls.dll
 C:\Users\Pham_Ha_PC\Documents\BTL_LTHSK\BTL\BTL\stdole.dll
 C:\Users\Pham_Ha_PC\Documents\BTL_LTHSK\BTL\BTL\obj\Debug\BTL.report.FormThongKeDonLopHanhChinh.resources
-=======
 =======
 >>>>>>> 90f90133754c72bded4f4958e319c48b0d653571
 D:\LTHSK\BTL_LTHSK\BTL\BTL\obj\Debug\BTL.FormLopHanhChinh.resources
@@ -65,7 +63,3 @@ D:\LTHSK\BTL_LTHSK\BTL\BTL\CrystalDecisions.ReportAppServer.CommonObjectModel.dl
 D:\LTHSK\BTL_LTHSK\BTL\BTL\CrystalDecisions.ReportAppServer.ObjectFactory.dll
 D:\LTHSK\BTL_LTHSK\BTL\BTL\CrystalDecisions.ReportAppServer.CommonControls.dll
 D:\LTHSK\BTL_LTHSK\BTL\BTL\stdole.dll
-<<<<<<< HEAD
->>>>>>> 90f90133754c72bded4f4958e319c48b0d653571
-=======
->>>>>>> 90f90133754c72bded4f4958e319c48b0d653571
