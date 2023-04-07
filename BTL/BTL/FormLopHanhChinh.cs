@@ -194,36 +194,36 @@ namespace BTL
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                FormReport formReport = new FormReport(connectionStr);
-                string filter = "{selectlophanhchinh.iSiso} > 0";
-                string path = $@"{Application.StartupPath}\report\lophanhchinh\Reportlophanhchinh.rpt";
-                Report report = new Report("selectlophanhchinh");
-                report.addFilerColumn(table, "sMaLop", txtBoxMaLop.Text);
-                report.addFilerColumn(table, "iSiSo", textSiSo.Text);
-                report.addFilerColumn(table, "sTenGV", comboBoxTenGiaoVien.Text);
-                report.addFilerColumn(table, "sTenLop", txtBoxTenLop.Text);
-                report.addFilerColumn(table, "sTenKhoa", comboBoxTenKhoa.Text);
-                formReport.crystalReportViewer.ReportSource = report.CreateReportDocument(table, path);
-                formReport.Show();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //try
+            //{
+            //    FormReport formReport = new FormReport(connectionStr);
+            //    string filter = "{selectlophanhchinh.iSiso} > 0";
+            //    string path = $@"{Application.StartupPath}\report\lophanhchinh\Reportlophanhchinh.rpt";
+            //    Report report = new Report("selectlophanhchinh");
+            //    report.addFilerColumn(table, "sMaLop", txtBoxMaLop.Text);
+            //    report.addFilerColumn(table, "iSiSo", textSiSo.Text);
+            //    report.addFilerColumn(table, "sTenGV", comboBoxTenGiaoVien.Text);
+            //    report.addFilerColumn(table, "sTenLop", txtBoxTenLop.Text);
+            //    report.addFilerColumn(table, "sTenKhoa", comboBoxTenKhoa.Text);
+            //    formReport.crystalReportViewer.ReportSource = report.CreateReportDocument(table, path);
+            //    formReport.Show();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (!isExistMaLop)
-            {
-                MessageBox.Show("không tồn tại mã lớp");
-                return;
-            }
-            FormThongKeDonLopHanhChinh thongkedon = new FormThongKeDonLopHanhChinh(connectionStr, txtBoxMaLop.Text);
-            thongkedon.Show();
+            //if (!isExistMaLop)
+            //{
+            //    MessageBox.Show("không tồn tại mã lớp");
+            //    return;
+            //}
+            //FormThongKeDonLopHanhChinh thongkedon = new FormThongKeDonLopHanhChinh(connectionStr, txtBoxMaLop.Text);
+            //thongkedon.Show();
         }
 
         private void txtBoxTenLop_TextChanged(object sender, EventArgs e)
