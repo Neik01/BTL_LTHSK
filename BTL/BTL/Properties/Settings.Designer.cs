@@ -12,7 +12,15 @@ namespace BTL.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+<<<<<<< HEAD
+<<<<<<< HEAD
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0")]
+=======
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.5.0.0")]
+>>>>>>> 90f90133754c72bded4f4958e319c48b0d653571
+=======
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.5.0.0")]
+>>>>>>> 90f90133754c72bded4f4958e319c48b0d653571
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,11 +34,25 @@ namespace BTL.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+<<<<<<< HEAD
+<<<<<<< HEAD
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-2HP30CE;Initial Catalog=QUANLYGIANGDAY;Integrated Security=Tr" +
+            "ue")]
+        public string QUANLYGIANGDAYConnectionString {
+            get {
+                return ((string)(this["QUANLYGIANGDAYConnectionString"]));
+=======
+=======
+>>>>>>> 90f90133754c72bded4f4958e319c48b0d653571
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MY-PC\\SQLEXPRESS;Initial Catalog=QUANLYGIANGDAY2;Integrated Security=" +
             "True")]
         public string QUANLYGIANGDAY2ConnectionString {
             get {
                 return ((string)(this["QUANLYGIANGDAY2ConnectionString"]));
+<<<<<<< HEAD
+>>>>>>> 90f90133754c72bded4f4958e319c48b0d653571
+=======
+>>>>>>> 90f90133754c72bded4f4958e319c48b0d653571
             }
         }
     }

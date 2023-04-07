@@ -43,9 +43,11 @@ namespace BTL
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBoxTenKhoa = new System.Windows.Forms.ComboBox();
-            this.text_magiaovien = new System.Windows.Forms.Label();
+            this.textMaGiaoVien = new System.Windows.Forms.Label();
             this.textSiSo = new System.Windows.Forms.Label();
-            this.text_MaKhoa = new System.Windows.Forms.Label();
+            this.textMaKhoa = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGribView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -178,13 +180,13 @@ namespace BTL
             this.comboBoxTenKhoa.SelectedIndexChanged += new System.EventHandler(this.comboBoxTenKhoa_SelectedIndexChanged);
             this.comboBoxTenKhoa.TextChanged += new System.EventHandler(this.comboBoxTenKhoa_TextChanged);
             // 
-            // text_magiaovien
+            // textMaGiaoVien
             // 
-            this.text_magiaovien.AutoSize = true;
-            this.text_magiaovien.Location = new System.Drawing.Point(180, 175);
-            this.text_magiaovien.Name = "text_magiaovien";
-            this.text_magiaovien.Size = new System.Drawing.Size(0, 13);
-            this.text_magiaovien.TabIndex = 29;
+            this.textMaGiaoVien.AutoSize = true;
+            this.textMaGiaoVien.Location = new System.Drawing.Point(180, 175);
+            this.textMaGiaoVien.Name = "textMaGiaoVien";
+            this.textMaGiaoVien.Size = new System.Drawing.Size(0, 13);
+            this.textMaGiaoVien.TabIndex = 29;
             // 
             // textSiSo
             // 
@@ -194,19 +196,41 @@ namespace BTL
             this.textSiSo.Size = new System.Drawing.Size(0, 13);
             this.textSiSo.TabIndex = 29;
             // 
-            // text_MaKhoa
+            // textMaKhoa
             // 
-            this.text_MaKhoa.AutoSize = true;
-            this.text_MaKhoa.Location = new System.Drawing.Point(180, 200);
-            this.text_MaKhoa.Name = "text_MaKhoa";
-            this.text_MaKhoa.Size = new System.Drawing.Size(0, 13);
-            this.text_MaKhoa.TabIndex = 29;
+            this.textMaKhoa.AutoSize = true;
+            this.textMaKhoa.Location = new System.Drawing.Point(180, 200);
+            this.textMaKhoa.Name = "textMaKhoa";
+            this.textMaKhoa.Size = new System.Drawing.Size(0, 13);
+            this.textMaKhoa.TabIndex = 29;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(553, 115);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 37;
+            this.button1.Text = "Báo cáo";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(553, 150);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(141, 23);
+            this.button2.TabIndex = 38;
+            this.button2.Text = "Thống kê lớp hành chính";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // FormLopHanhChinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_search);
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.comboBoxTenKhoa);
@@ -214,8 +238,8 @@ namespace BTL
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textSiSo);
-            this.Controls.Add(this.text_MaKhoa);
-            this.Controls.Add(this.text_magiaovien);
+            this.Controls.Add(this.textMaKhoa);
+            this.Controls.Add(this.textMaGiaoVien);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lb_TC);
             this.Controls.Add(this.txtBoxTenLop);
@@ -249,8 +273,10 @@ namespace BTL
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBoxTenKhoa;
-        private System.Windows.Forms.Label text_magiaovien;
+        private System.Windows.Forms.Label textMaGiaoVien;
         private System.Windows.Forms.Label textSiSo;
-        private System.Windows.Forms.Label text_MaKhoa;
+        private System.Windows.Forms.Label textMaKhoa;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
