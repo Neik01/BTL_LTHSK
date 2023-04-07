@@ -16,9 +16,9 @@ namespace BTL
     {
 
         private ErrorProvider errorProvider = new ErrorProvider();
-        string connectionString = "Data Source=MY-PC\\SQLEXPRESS;Initial Catalog=QUANLYGIANGDAY2;Integrated Security=True";
-        //private string connectionString =
-        //    ConfigurationManager.ConnectionStrings["QUANLYGIANGDAY2"].ConnectionString;
+        //string connectionString = "Data Source=MY-PC\\SQLEXPRESS;Initial Catalog=QUANLYGIANGDAY2;Integrated Security=True";
+        private string connectionString =
+            ConfigurationManager.ConnectionStrings["BTL.Properties.Settings.QUANLYGIANGDAY2ConnectionString"].ConnectionString;
         private DataTable tableGridView = new DataTable();
 
         private DataView dv = new DataView();
