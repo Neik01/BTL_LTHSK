@@ -7,7 +7,6 @@ select sMaLop, sTenGV, iSiSo, sTenLop, l.sMaGV, l.sMaKhoa, sTenKhoa
 from tblLopHC as l, tblGiangVien as gv, tblKhoa as k
 where l.sMaKhoa = k.sMaKhoa and gv.sMaGV = l.sMaGV
 
-
 --	Sửa tên lớp hc của sinh viên để chuyên sang lớp khác thông qua mã sinh viên, mã lớp được truyền vào
 create proc updatechuyenLop
 @masv varchar(50), @malop varchar(50)

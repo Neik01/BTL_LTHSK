@@ -65,6 +65,18 @@
       <DependentUpon>DSMH.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="BaoCao\lophanhchinh\Reportlophanhchinh.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reportlophanhchinh.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaoCao\lophanhchinh\thongkedonlophanhchinh.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>thongkedonlophanhchinh.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FormHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +118,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QUANLYGIANGDAY2DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="QUANLYGIANGDAYDataSet11.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QUANLYGIANGDAYDataSet11.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QUANLYGIANGDAYDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QUANLYGIANGDAYDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report.cs" />
+    <Compile Include="selectlophanhchinh.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>selectlophanhchinh.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="BaoCao\ChiTietMonHoc.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ChiTietMonHoc.cs</LastGenOutput>
@@ -113,6 +141,14 @@
     <EmbeddedResource Include="BaoCao\DSMH.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>DSMH.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\lophanhchinh\Reportlophanhchinh.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Reportlophanhchinh.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCao\lophanhchinh\thongkedonlophanhchinh.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>thongkedonlophanhchinh.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="FormHome.resx">
       <DependentUpon>FormHome.cs</DependentUpon>
@@ -180,6 +216,39 @@
     </None>
     <None Include="QUANLYGIANGDAY2DataSet1.xss">
       <DependentUpon>QUANLYGIANGDAY2DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="QUANLYGIANGDAYDataSet11.xsc">
+      <DependentUpon>QUANLYGIANGDAYDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="QUANLYGIANGDAYDataSet11.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QUANLYGIANGDAYDataSet11.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QUANLYGIANGDAYDataSet11.xss">
+      <DependentUpon>QUANLYGIANGDAYDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="QUANLYGIANGDAYDataSet3.xsc">
+      <DependentUpon>QUANLYGIANGDAYDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="QUANLYGIANGDAYDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QUANLYGIANGDAYDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QUANLYGIANGDAYDataSet3.xss">
+      <DependentUpon>QUANLYGIANGDAYDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="selectlophanhchinh.xsc">
+      <DependentUpon>selectlophanhchinh.xsd</DependentUpon>
+    </None>
+    <None Include="selectlophanhchinh.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>selectlophanhchinh.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="selectlophanhchinh.xss">
+      <DependentUpon>selectlophanhchinh.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

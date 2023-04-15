@@ -22,25 +22,40 @@ using System.Windows.Forms;
 using System.Xml;
 
 using System.Xml;
-
+using System.Configuration;
 
 namespace BTL
 {
     public partial class FormReport : Form
     {
 
-        private string connectionStr;
-        private const string SELECT_lOP_HANH_CHINH = "selectlophanhchinh";
+        private string connectionStr = ConfigurationManager.ConnectionStrings["QUANLYGIANGDAY2ConnectionString"].ConnectionString;
+        private const string SELECT_lOP_HANH_CHINH_THEO_MA = "selectlophanhchinhtheoma";
 
+        public void thongkelophanhchinhtheomalop(string malop)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionStr))
+            {
+                using (SqlCommand command = new SqlCommand(SELECT_lOP_HANH_CHINH_THEO_MA, connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@malop", malop);
+                    using(SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        using(DataTable table = new DataTable())
+                        {
+                            adapter.Fill(table);
+                            Report report = new Report(SELECT_lOP_HANH_CHINH_THEO_MA);
+                            string path = $@"{Application.StartupPath}\BaoCao\lophanhchinh\thongkedonlophanhchinh.rpt";
+                            this.crystalReportViewer.ReportSource = report.CreateReportDocument(table, path);
+                        }
+                    }
+                }
+            }
+        }
         public FormReport()
         {
             InitializeComponent();
-        }
-
-        public FormReport(string connection)
-        {
-            InitializeComponent();
-            this.connectionStr = connection;
         }
 
         private void FormReport_Load(object sender, EventArgs e)
@@ -63,7 +78,7 @@ namespace BTL
             //        }
             //    }
             //}
-            
+
         }
 
         public void showReport(string reportFileName, string spName, string connection)
@@ -90,7 +105,7 @@ namespace BTL
 
 
 
-                                crystalReportViewer1.ReportSource = reportDocument;
+                                crystalReportViewer.ReportSource = reportDocument;
                             }
                         }
                     }
@@ -128,7 +143,7 @@ namespace BTL
 
 
 
-                                    crystalReportViewer1.ReportSource = reportDocument;
+                                    crystalReportViewer.ReportSource = reportDocument;
                                 }
                             }
                         }
@@ -142,10 +157,10 @@ namespace BTL
             }
         }
     }
-    
+
 }
 
 
-        
 
- 
+
+
