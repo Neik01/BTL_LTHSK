@@ -12,7 +12,7 @@ namespace BTL
 {
     class Report
     {
-        private string Filter; 
+        private string Filter;
         private string tableName;
         public Report(string tableName)
         {
@@ -35,8 +35,23 @@ namespace BTL
                 Filter += string.Format(" {0} LIKE \"*{1}*\"", $"{{{this.tableName}.{column}}}", value);
                 return;
             }
+            if (datatypeColumn.Equals(typeof(DateTime)))
+            {
+                if (!string.IsNullOrEmpty(Filter)) Filter += " AND";
+                Filter += string.Format(" {0} = CDate(\"{1}\")", $"{{{this.tableName}.{column}}}", value);
+            }
         }
-
+        public void addFilerColumn(DataTable table, string column, string fromDate, string toDate)
+        {
+            if (string.IsNullOrEmpty(fromDate) || string.IsNullOrEmpty(toDate))
+                return;
+            Type datatypeColumn = table.Columns[column].DataType;
+            if (datatypeColumn.Equals(typeof(DateTime)))
+            {
+                if (!string.IsNullOrEmpty(Filter)) Filter += " AND";
+                Filter += string.Format(" {0} >= CDate(\"{1}\") and {2} <= CDate(\"{3}\")", $"{{{this.tableName}.{column}}}", fromDate, $"{{{this.tableName}.{column}}}", toDate);
+            }
+        }
         public ReportDocument CreateReportDocument(DataTable table, string pathFileReport)
         {
             ReportDocument report = new ReportDocument();
