@@ -17,7 +17,7 @@ namespace BTL
 
         private ErrorProvider errorProvider = new ErrorProvider();
         private string connectionString =
-            ConfigurationManager.ConnectionStrings["QUANLYGIANGDAY2ConnectionString"].ConnectionString;
+            System.Configuration.ConfigurationManager.ConnectionStrings["QUANLYGIANGDAY2ConnectionString"].ConnectionString;
         private DataTable tableGridView = new DataTable();
 
         private DataView dv = new DataView();
