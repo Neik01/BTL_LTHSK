@@ -341,10 +341,10 @@ namespace BTL
             string filter = "sMaMon IS NOT NULL";
             if (!string.IsNullOrEmpty(tb_Name.Text))
             {
-                filter += string.Format(" AND sTenMon LIKE '%{0}%'", tb_Name.Text);
+                filter += string.Format(" AND sTenMon LIKE \"%{0}%\"", tb_Name.Text);
             }
             if (!string.IsNullOrEmpty(tb_TC.Text))
-                filter += string.Format(" AND iTc LIKE '%{0}%'", tb_TC.Text);
+                filter += string.Format(" AND iTc LIKE \"%{0}%\"", tb_TC.Text);
 
 
             LoadDataToGridView(filter);
